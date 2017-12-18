@@ -6,30 +6,31 @@ import java.util.Scanner;
 public class Guessing {
 
 	public static void main(String[] args) {
+		
 		Random rand = new Random();
-		int guess = rand.nextInt(101);
-		System.out.println(guess);
-		int strzal = getInt("Podaj liczbę");
-		
-		while (guess != strzal) {
-			if (strzal < guess) {
-				System.out.println("Za mało");
+		int number = rand.nextInt(100) + 1;
+
+		int guess = getInt("Guess a number between 1 and 100");
+
+		while (number != guess) {
+			if (guess < number) {
+				System.out.println("Too low");
 			} else {
-				System.out.println("Za dużo");
+				System.out.println("Too much");
 			}
-			strzal = getInt("Podaj liczbę");
+			guess = getInt("Try again");
 		}
-		
-		
-		System.out.println("Zgadłeś");
-		}
-	
+
+
+		System.out.println("You have guessed!");
+	}
+
 	public static int getInt(String message) {
-    	Scanner scan = new Scanner(System.in);
-    	System.out.println(message);
-    	while(!scan.hasNextInt()) {
-    		System.out.println("to miała być liczba");
-    		scan.next(); }
-    	return scan.nextInt();
-    }
+		Scanner scan = new Scanner(System.in);
+		System.out.println(message);
+		while(!scan.hasNextInt()) {
+			System.out.println("It should be a number!");
+			scan.next(); }
+		return scan.nextInt();
+	}
 }
